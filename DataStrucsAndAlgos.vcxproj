@@ -92,8 +92,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms</AdditionalIncludeDirectories>
-      <AdditionalUsingDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms</AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms; $(ProjectDir)\Macros;</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms; $(ProjectDir)\Macros;</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -108,8 +108,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms</AdditionalIncludeDirectories>
-      <AdditionalUsingDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms</AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms; $(ProjectDir)\Macros;</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms; $(ProjectDir)\Macros;</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -122,8 +122,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms</AdditionalIncludeDirectories>
-      <AdditionalUsingDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms</AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms; $(ProjectDir)\Macros;</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms; $(ProjectDir)\Macros;</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -138,8 +138,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms</AdditionalIncludeDirectories>
-      <AdditionalUsingDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms</AdditionalUsingDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms; $(ProjectDir)\Macros;</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>$(ProjectDir)\DataStructs; $(ProjectDir)\Algorithms; $(ProjectDir)\Macros;</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -150,10 +150,11 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DataStructs\LinkedLists.hpp" />
+    <ClInclude Include="DataStructs\SinglyLinkedLists.hpp" />
+    <ClInclude Include="Macros\Macros.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataStructs\LinkedLists.inl" />
+    <None Include="DataStructs\SinglyLinkedLists.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

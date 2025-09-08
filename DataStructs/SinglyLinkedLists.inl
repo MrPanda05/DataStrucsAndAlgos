@@ -1,16 +1,22 @@
-#include "LinkedLists.hpp"
-namespace LinkedLists {
+#include "SinglyLinkedLists.hpp"
+#include "Macros.hpp"
+namespace SinglyList {
 
     template<typename T>
-    SinglyList<T>::SinglyList() : _head(nullptr), _size(0) {}
+    SinglyLists<T>::SinglyLists() : _head(nullptr), _size(0) {}
 
 	template<typename T>
-	SinglyList<T>::~SinglyList() {
-
+	SinglyLists<T>::~SinglyLists() {
+		Node* current = _head;
+		while (current != nullptr) {
+			Node* next = current->next;
+			delete current;
+			current = next;
+		}
 	}
 
 	template<typename T>
-	void SinglyList<T>::print() {
+	void SinglyLists<T>::print() {
 		Node* first = _head;
 		int count = 0;
 		if (_size == 0) {
@@ -30,8 +36,9 @@ namespace LinkedLists {
 		std::cout << std::endl;
 	}
 
+
 	template<typename T>
-	bool SinglyList<T>::isEmpty() {
+	bool SinglyLists<T>::isEmpty() {
 		return _size == 0;
 	}
 
@@ -53,7 +60,7 @@ namespace LinkedLists {
 	/// <typeparam name="T"></typeparam>
 	/// <param name="data">The data that the node will hold</param>
 	template<typename T>
-	void SinglyList<T>::push(T data) {
+	void SinglyLists<T>::push(T data) {
 		Node* newNode = new Node(data);
 		if (_head == nullptr) {
 			_head = newNode;
@@ -88,7 +95,7 @@ namespace LinkedLists {
 	/// </summary>
 	/// <typeparam name="T"></typeparam>
 	template<typename T>
-	void SinglyList<T>::pop() {
+	void SinglyLists<T>::pop() {
 		if (_head == nullptr) return;
 
 		if (_head->_next == nullptr) {
@@ -124,7 +131,7 @@ namespace LinkedLists {
 	/// <typeparam name="T"></typeparam>
 	/// <param name="data">The date to be added</param>
 	template<typename T>
-	void SinglyList<T>::pushFront(T data) {
+	void SinglyLists<T>::pushFront(T data) {
 		Node* newNode = new Node(data);
 		if (_head == nullptr) {
 			_head = newNode;
@@ -149,7 +156,7 @@ namespace LinkedLists {
 	/// Removes the first element of the list
 	/// </summary>
 	template<typename T>
-	void SinglyList<T>::popFront() {
+	void SinglyLists<T>::popFront() {
 		if (_head == nullptr) return;
 
 		Node* rest = _head->_next;
@@ -182,26 +189,160 @@ namespace LinkedLists {
 	/// <param name="index">The index at which the element will be put, zero based index</param>
 	/// <param name="data">The data of the node</param>
 	template<typename T>
-	void SinglyList<T>::insert(unsigned int index, T data) {
-		if (index > size()) return;
+	void SinglyLists<T>::insert(uint index, T data) {
+		if (index > _size) return;
 		if (index == 0) {
 			this->pushFront(data);
 			return;
 		}
-		if (index == size()) {
+		if (index == _size) {
 			this->push(data);
 			return;
 		}
-		int counter = 0;
 		Node* current = _head;
-		while (counter < index - 1) {
+		for (uint i = 0; i < index - 1; i++) {
 			current = current->_next;
-			counter++;
 		}
 		Node* newNode = new Node(data);
 		newNode->_next = current->_next;
 		current->_next = newNode;
 		_size++;
+	}
+
+	/// Pseudo
+	///
+	/// 1 - if size() is 0 return, list is empty
+	/// 2 - if index >= size return, cant remove node that does not exist
+	/// 3 - if index is 0
+	/// 3.1 - popFront
+	/// 4 - if index is size()-1
+	/// 4.1 - pop
+	/// 5 - create a temp node var named rest
+	/// 6 - create current node = head
+	/// 7 - loop until i is index - 1
+	/// 7.1 - current = current->next;
+	/// 8 - rest = current.next.nextç
+	/// 9 - delete current.next
+	/// 10 - current.next = rest;
+	/// 11 decrement counter
+	/// 
+
+	/// <summary>
+	/// Removes node at index
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="index"></param>
+	template<typename T>
+	void SinglyLists<T>::remove(uint index) {
+		if (_size == 0) return;
+		if (index >= _size) return;
+		if (index == 0) {
+			popFront();
+			return;
+		}
+		if (index == _size - 1) {
+			pop();
+			return;
+		}
+		Node* current = _head;
+		Node* rest = nullptr;
+		for (uint i = 0; i < index-1; i++) {
+			current = current->_next;
+		}
+		rest = current->_next->_next;
+		delete current->_next;
+		current->_next = rest;
+		_size--;
+
+	}
+	///Pseudo
+	///
+	/// 1 - if size is 0 return;
+	/// 2 - if index is >= size return;
+	/// 3 - if index is 0
+	/// 3.1 - set head.data = data
+	/// 4 - temp current node = head
+	/// 5 - loop, while i < index
+	/// 5.1 current = current.next
+	/// 6 - curren.data = data;
+	/// 
+
+	/// <summary>
+	/// Set the data of a node at index
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="index"></param>
+	/// <param name="data"></param>
+	template<typename T>
+	void SinglyLists<T>::set(uint index, T data) {
+		if (_size == 0) return;
+		if (index >= _size) return;
+		if (index == 0) {
+			_head->_data = data;
+			return;
+		}
+		Node* current = _head;
+		for (uint i = 0; i < index; i++) {
+			current = current->_next;
+		}
+		current->_data = data;
+	}
+	/// Pseudo
+	///
+	/// 1 - if index is >= than size return;
+	/// 2 - if size is 0, return;
+	/// 3 - if index is 0, return _head.data;
+	/// 4 - temp current node = head
+	/// 5 - loop, while i < index
+	/// 5.1 current = current.next
+	/// 6 - retrun curren.data
+
+	/// <summary>
+	/// Get the data of node at index
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="index"></param>
+	/// <returns></returns>
+	template<typename T>
+	T SinglyLists<T>::get(uint index) {
+		if (_size == 0) return nullptr;
+		if (index >= _size) return nullptr;
+		if (index == 0) {
+			return _head->_data;
+		}
+		Node* current = _head;
+		for (uint i = 0; i < index; i++) {
+			current = current->_next;
+		}
+		return current->_data;
+	}
+
+	/// Pseudo
+	/// 
+	/// 1 - if size is 0, return;
+	/// 2 - temp current node = head
+	/// 3 - loop, while i < index
+	/// 4.1 - if current.data = data re
+	/// 4.1 current = current.next
+	/// 
+
+	/// <summary>
+	/// Find the first index node with data
+	/// </summary>
+	/// <typeparam name="T"></typeparam>
+	/// <param name="data"></param>
+	/// <returns></returns>
+	template<typename T>
+	uint SinglyLists<T>::find(T data) {
+		if (_size == 0) return nullptr;
+		Node* current = _head;
+		for (uint i = 0; i < _size; i++) {
+			if (current->_data == data) {
+				return i;
+			}
+			current = current->_next;
+		}
+		return nullptr;
 	}
 
 }

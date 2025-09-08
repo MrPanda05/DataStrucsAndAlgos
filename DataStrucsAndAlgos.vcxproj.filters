@@ -20,12 +20,15 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DataStructs\LinkedLists.hpp">
+    <ClInclude Include="DataStructs\SinglyLinkedLists.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Macros\Macros.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataStructs\LinkedLists.inl">
+    <None Include="DataStructs\SinglyLinkedLists.inl">
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>
