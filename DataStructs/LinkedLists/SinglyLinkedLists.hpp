@@ -1,7 +1,7 @@
 #pragma once
 #include "Macros.hpp"
-
-namespace SinglyList{
+#include "Node.hpp"
+namespace LinkedList{
 
 	/// <summary>
 	/// Singly linked list are lists that a node has a data and a pointer to the next node, if the next node is null it is the end of the list.
@@ -11,13 +11,7 @@ namespace SinglyList{
 	template <typename T>
 	class SinglyLists {
 		private:
-			class Node {
-			public:
-				Node(T data) : _data(data), _next(nullptr) {}
-				Node* _next;
-				T _data;
-			};
-			Node* _head;
+			SLL_Node<T>* _head;
 			uint _size;
 		public:
 			SinglyLists();

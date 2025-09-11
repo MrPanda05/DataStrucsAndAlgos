@@ -1,15 +1,17 @@
 #include "SinglyLinkedLists.hpp"
+#include "Node.hpp"
 #include "Macros.hpp"
-namespace SinglyList {
+
+namespace LinkedList {
 
     template<typename T>
     SinglyLists<T>::SinglyLists() : _head(nullptr), _size(0) {}
 
 	template<typename T>
 	SinglyLists<T>::~SinglyLists() {
-		Node* current = _head;
+		SLL_Node<T>* current = _head;
 		while (current != nullptr) {
-			Node* next = current->next;
+			SLL_Node* next = current->next;
 			delete current;
 			current = next;
 		}
@@ -17,7 +19,7 @@ namespace SinglyList {
 
 	template<typename T>
 	void SinglyLists<T>::print() {
-		Node* first = _head;
+		SLL_Node<T>* first = _head;
 		int count = 0;
 		if (_size == 0) {
 			std::cout << "List empty" << std::endl;
@@ -35,7 +37,6 @@ namespace SinglyList {
 		}
 		std::cout << std::endl;
 	}
-
 
 	template<typename T>
 	bool SinglyLists<T>::isEmpty() {
@@ -61,13 +62,13 @@ namespace SinglyList {
 	/// <param name="data">The data that the node will hold</param>
 	template<typename T>
 	void SinglyLists<T>::push(T data) {
-		Node* newNode = new Node(data);
+		SLL_Node<T>* newNode = new SLL_Node<T>(data);
 		if (_head == nullptr) {
 			_head = newNode;
 			_size++;
 			return;
 		}
-		Node* current = _head;
+		SLL_Node<T>* current = _head;
 		while (current->_next != nullptr) {
 			current = current->_next;
 		}
@@ -105,7 +106,7 @@ namespace SinglyList {
 			return;
 		}
 
-		Node* current = _head;
+		SLL_Node<T>* current = _head;
 		while (current->_next->_next != nullptr) {
 			current = current->_next;
 		}
@@ -132,13 +133,13 @@ namespace SinglyList {
 	/// <param name="data">The date to be added</param>
 	template<typename T>
 	void SinglyLists<T>::pushFront(T data) {
-		Node* newNode = new Node(data);
+		SLL_Node<T>* newNode = new SLL_Node<T>(data);
 		if (_head == nullptr) {
 			_head = newNode;
 			_size++;
 			return;
 		}
-		Node* rest = _head;
+		SLL_Node<T>* rest = _head;
 		_head = newNode;
 		newNode->_next = rest;
 		_size++;
@@ -159,7 +160,7 @@ namespace SinglyList {
 	void SinglyLists<T>::popFront() {
 		if (_head == nullptr) return;
 
-		Node* rest = _head->_next;
+		SLL_Node<T>* rest = _head->_next;
 		delete _head;
 		_head = rest;
 		_size--;
@@ -199,11 +200,11 @@ namespace SinglyList {
 			this->push(data);
 			return;
 		}
-		Node* current = _head;
+		SLL_Node<T>* current = _head;
 		for (uint i = 0; i < index - 1; i++) {
 			current = current->_next;
 		}
-		Node* newNode = new Node(data);
+		SLL_Node<T>* newNode = new SLL_Node<T>(data);
 		newNode->_next = current->_next;
 		current->_next = newNode;
 		_size++;
@@ -244,8 +245,8 @@ namespace SinglyList {
 			pop();
 			return;
 		}
-		Node* current = _head;
-		Node* rest = nullptr;
+		SLL_Node<T>* current = _head;
+		SLL_Node<T>* rest = nullptr;
 		for (uint i = 0; i < index-1; i++) {
 			current = current->_next;
 		}
@@ -281,7 +282,7 @@ namespace SinglyList {
 			_head->_data = data;
 			return;
 		}
-		Node* current = _head;
+		SLL_Node<T>* current = _head;
 		for (uint i = 0; i < index; i++) {
 			current = current->_next;
 		}
@@ -305,12 +306,12 @@ namespace SinglyList {
 	/// <returns></returns>
 	template<typename T>
 	T SinglyLists<T>::get(uint index) {
-		if (_size == 0) return nullptr;
-		if (index >= _size) return nullptr;
+		if (_size == 0) return;
+		if (index >= _size) return;
 		if (index == 0) {
 			return _head->_data;
 		}
-		Node* current = _head;
+		SLL_Node<T>* current = _head;
 		for (uint i = 0; i < index; i++) {
 			current = current->_next;
 		}
@@ -335,7 +336,7 @@ namespace SinglyList {
 	template<typename T>
 	uint SinglyLists<T>::find(T data) {
 		if (_size == 0) return nullptr;
-		Node* current = _head;
+		SLL_Node<T>* current = _head;
 		for (uint i = 0; i < _size; i++) {
 			if (current->_data == data) {
 				return i;

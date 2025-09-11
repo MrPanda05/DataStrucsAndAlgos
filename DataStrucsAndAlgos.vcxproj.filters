@@ -20,15 +20,27 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DataStructs\SinglyLinkedLists.hpp">
+    <ClInclude Include="DataStructs\LinkedLists\SinglyLinkedLists.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Macros\Macros.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="DataStructs\LinkedLists\DoublyLinkedLists.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructs\LinkedLists\Node.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DataStructs\Lists\List.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataStructs\SinglyLinkedLists.inl">
+    <None Include="DataStructs\LinkedLists\SinglyLinkedLists.inl">
+      <Filter>Header Files</Filter>
+    </None>
+    <None Include="DataStructs\LinkedLists\DoublyLinkedLists.inl">
       <Filter>Header Files</Filter>
     </None>
   </ItemGroup>

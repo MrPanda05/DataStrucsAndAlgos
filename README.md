@@ -7,7 +7,7 @@
 ### data structs
 
 - Linked list
-- Arrays
+- Dynamic Arrays
 - Stacks
 - Queue
 - Hash

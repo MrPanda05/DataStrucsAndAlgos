@@ -1,11 +1,13 @@
 #include <iostream>
 #include <cstdlib>
-#include "DataStructs/SinglyLinkedLists.hpp";
-using namespace SinglyList;
+#include "DataStructs/LinkedLists/SinglyLinkedLists.hpp"
+//#include "DataStructs/LinkedLists/DoublyLinkedLists.hpp"
+using namespace LinkedList;
 
 int main() {
 	std::cout << "Hello, World!" << std::endl;
 	SinglyLists<int>* balls = new SinglyLists<int>();
+	//oublyLists<int>* pele = new DoublyLists<int>();
 	/*balls->print();
 	balls->print();
 	balls->pop();
@@ -33,10 +35,13 @@ int main() {
 	balls->push(4);
 	balls->push(5);
 	balls->push(6);
-	balls->print();
+	//balls->print();
 	//balls->remove(2);
 	balls->set(0, 600);
-	balls->print();
+	//balls->print();
+	int test = balls->get(0);
+
+	std::cout << test;
 
 
 

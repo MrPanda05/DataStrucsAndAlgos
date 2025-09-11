@@ -150,11 +150,15 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DataStructs\SinglyLinkedLists.hpp" />
+    <ClInclude Include="DataStructs\LinkedLists\DoublyLinkedLists.hpp" />
+    <ClInclude Include="DataStructs\LinkedLists\Node.hpp" />
+    <ClInclude Include="DataStructs\LinkedLists\SinglyLinkedLists.hpp" />
+    <ClInclude Include="DataStructs\Lists\List.hpp" />
     <ClInclude Include="Macros\Macros.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataStructs\SinglyLinkedLists.inl" />
+    <None Include="DataStructs\LinkedLists\DoublyLinkedLists.inl" />
+    <None Include="DataStructs\LinkedLists\SinglyLinkedLists.inl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
